@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2Fposts%2F4a17b156.html</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Mysql简单入门]]></title>
+    <url>%2Fposts%2F96af40f.html</url>
+    <content type="text"><![CDATA[1、连接数据库 mysql -h localhost -u root -p Entry password: 2、查看数据库 show databases; 3、创建数据库 create database test; test为数据库名 4、使用选中数据库 use test; 5、显示表 show tables; 6、删除数据库 drop database test; 7、创建表 create table class(stu int,name varchar(20)); class为表名 8、更改表名 rename NewName to OldName; 9、显示表信息 desc class; 注意：命令退出\c 10、建表create table msg( id int, title varchar(60), name varchar(10), content varchar(1000) ); create table class( id int primary key auto_increment, namevarchar(10), age tinyint )charset utf8; 11、增alter table class add age2 tinyint unsigned;增加一列alter table class add age2 tinyint unsigned not null default 0;推荐使用默认值，不为null，默认为0 insert into msg (id,title,name,content) values (1,’初来乍到’,’张三’,’刚来能不能当老大？’); insert into msg (id,title,name,content) values (3,’又来了’,’王五’,’千年老二’),(4,’4标题’,’刘备’,’雌雄双剑’), (5,’5标题’,’关飞’,’大刀’); 12、解决字符集问题默认建表一般用utf8，而我们在问windows下窗口是GBK，因此需要声明字符集 set names gbk; 13、改 update msg set title=’俺来了’, content=’偏要当老大’ where name=’李四’; 14、删 delete from msg where id=2 ; 15、查列 select id,title from msg; 行 select *from msg where id&gt;2; 行列 select id,title from msg where id&gt;2; 详细，查询的5种子句：where,group,having,order by,limit 16、所谓建表：就是声明列的过程列：不同的列类型占的空间不一样选列原则：够用、不浪费 17、详解列类型：整型：tinyint 1/smallint 2/mediumint 3/int 4/bigint 8占据空间、存储范围默认有符号tinyint(M) unsigned zerofill M:宽度 无符号 0填充（如果为zerofill，默认为unsigned）alter table class add age2 tinyint unsigned;增加一列 浮点型 ：float（M,D） M:精度（总位数，不包含点） D:标度（小数位）更精确 定点型：decimal（M,D）6，2两者字节：4个字节或8个字节 字符型char(M)：定长字符,M为宽度，可容纳的字符数；0-255varchar(M)：可变长度字符集；有1-2字节记录长度（0-65535，约2w-6w字符，受字符集影响）区别：char 定长，M个字符，如果存的小于M，空格补齐，实占M个；末尾空格去除，存取速度更快varchar 变长，M个字符，如果存的小于M，假设为N,N&lt;=M,实占N+（1-2）个字符；末尾空格保留text：文本类型，可以存比较大的文本段，搜索速度慢，；不用加默认值（加了也没用）；约2w-6w字符，受字符集影响） 日期/时间型，最好有’’,这里省略了，例如:’1992-08-12’year:范围1901-2155；[000表示错误选择]如果输入2位，00-69表示2000-2069，70-99表示1970-1999年year(4)date:典型格式：1992-08-12范围：1000-01-01–&gt;9999-12-31 time:典型格式 hh:mm:ss，范围-838:59:59-&gt;+838:59:59datetime:上面两个结合注意：在开发中，很少使用日期时间类型来表示一个需要的精确到秒的列原因：虽然日期时间类型能精确到秒，且方便查看，但计算不便，故用时间戳（int）来表示，即1970-01-01 00:00:00到当前的秒数，也方便格式化显示 enum()：枚举类型set():集合型]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>Mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[My New Post]]></title>
+    <url>%2Fposts%2F177574ba.html</url>
+    <content type="text"><![CDATA[测试功能简单实例 当开发一个Unix服务器程序时，一般有两种类型可供选择 当开发一个Unix服务器程序时，一般有两种类型可供选择 当开发一个Unix服务器程序时，一般有两种类型可供选择 当开发一个Unix服务器程序时，一般有两种类型可供选择 Download Now]]></content>
+      <categories>
+        <category>Test</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[客户/服务器设计范式]]></title>
+    <url>%2Fposts%2Fc1208a6.html</url>
+    <content type="text"><![CDATA[当开发一个Unix服务器程序时，一般有两种类型可供选择：迭代服务器、并发服务器。相对来说，客户程序的编写通常比服务器程序容易些，因为客户中进程控制要少得多。针对TCP服务器，总结了9个不同的服务器程序设计范式。 1.迭代服务器迭代TCP服务器总是在完全处理某个客户的请求之后才开始下一个客户。这样的服务程序比较少见。 2.并发服务器，每个客户请求fork一个子进程传统并发服务器调用fork派生一个子进程来处理每个客户，这使得服务器能够同时为多个客户服务，每个进程一个客户。客户数目的唯一限制是操作系统对其能够同时拥有多少子进程的限制。绝大多数TCP服务器程序都是按这个范式编写。并发服务器的问题在于为每个客户现场fork一个子进程比较耗费CPU时间。 3.预先派生子进程服务器，accept无上锁保护使用该技术的服务器不同于传统意义的并发服务器那样为每个客户现场派生一个子进程，而是在启动阶段预先派生一定数量的子进程，当有客户连接到达时，这些子进程就能立即为它提供服务。这种技术的有点在于无需引入父进程执行fork的开销就能处理新到来的客户。缺点是父进程必须在服务启动阶段猜测需要预先派生多少子进程。如果某个时刻客户数恰好等于子进程总数，那么新到的客户将被忽略，直到至少有一个子进程完成处理重新可用。 存在惊群问题 即当一个子进程将获得连接时，所有N个子进程都被唤醒，其中只有最先运行的子进程获得那个客户的连接，其余N-1个子进程继续回复睡眠。 使用select冲突问题 当多个进程在引用同一个套接字的描述符上调用select（例：监听套接字描述符）时就会发生冲突，因为在socket结构中为存放本套接字就绪之时应该唤醒哪些进程而分配的仅仅只是一个进程ID空间。如果有多个进程在等待同一个套接字，那么内核必须唤醒的是阻塞在select调用中的所有进程，因为它不知道那些进程受刚变得就绪的这个套接字的影响。 总结：如果有多个进程阻塞在引用同一个实体（例如套接字或普通文件，由file结构或间接描述）的描述符上，那么最好直接阻塞在诸如accept之类的函数而不是select之中。 4.预先派生子进程,accept使用文件上锁保护在多个进程中引用同一个监听套接字的描述符上调用accept，这种做法在某些系统的内核实现是不被支持的，同时针对前面所述惊群问题，解决办法是让应用进程在调用accept前后安装某种形式的锁(lock),这样任意时刻只有一个子进程阻塞在accept调用中，其他子进程则阻塞在获取保护accept的锁上。使用文件锁来保证每次只有一个子进程阻塞在accept调用中,不过文件锁涉及到文件系统的操作，可能比较耗时。 5.预先派生子进程服务器,accept使用线程上锁保护使用线程锁保护accept，对比文件锁保护accept，这种方法不仅适用于同一进程内各个线程间的锁保护，而且能够用于不同进程之间的锁保护。在不同进程间上锁要求; 互斥锁变量必须存放在由所有进程共享的内存区中； 必须告知线程函数库这是在不通进程之间共享的互斥锁。这同样要求线程库支持PTHREAD_RPOCESS_SHARED属性。 6.预先派生子进程服务器，父进程向子进程传递套接字描述符只让父进程调用accept，然后把所接受的已经连接的套接字传递给某个子进程。这么做绕过了为所有子进程的accept调用提供上锁保护的需求，但是需要从父进程到子进程进行某种形式的描述符传递。这种技术会上代码比较复杂，父进程必须跟踪子进程的闲忙状态，以便于给空闲的子进程传递新的套接字。 这种父进程通过字节流管道把描述符传递到各个子进程，并且各个子进程通过字节流管道写回单个字节，相比共享内存区的互斥锁和使用文件锁，更为费时。 7.并发服务器，每个客户一个线程相比于上述的多进程模型，如果服务器主机提供支持线程，我们可以改用线程以取代进程。线程相比于进程的优势更多，具体不再赘述。 8.预先创建线程服务器，每个线程accept使用锁保护预先派生一个子进程池快于为每个客户现场派生一个子进程；在支持线程的系统上，在福取其启动阶段预先创建的线程池取代为每个客户现场创建一个线程的做法有类似的性能加速。这种服务器的基本设计是预先创建一个线程，并让每个线程各自调用accept，取代让每个线程都阻塞在accept调用中的做法，使用互斥锁保证任何时刻只有一个线程在调用accept。 9.预先创建线程服务器，主线程统一accept这种程序设计范式是在程序启动阶段创建一个线程池后让主线程调用accept并把每个客户连接传递给池中某个可用线程。 这样的设计问题在于主线程如何把一个已连接套接字传递给线程池中某个可用线程。 有很多实现手段，本可用如前面一样使用描述符传递，但是既然所有线程和所有描述符都在同一个进程中，那么也就没有必要把一个描述符从一个线程传递到另一个线程。接收线程只需要知道这个已连接套接字描述符的值，而描述符传递实际传递的并非这个值，而是对这个套接字的引用，因此也将返回一个不同于原值的描述符（该套接字的引用计数也会增加）。 总结： 当系统负载较轻时，每来一个客户请求现场派生一个子进程为之服务的传统并发服务器程序模型就足够了。这个模型甚至可以与inetd结合使用，也就是inetd处理每个连接的接受。 相比传统的每个客户fork一次设计范式，预先创建一个子进程池或一个线程池的范式能够把进程控制CPU时间降低10倍或以上。编写这些范式的程序并不会复杂，不过会有额外的工作，比如监视现在子进程数，随着所服务客户数的动态变化而增加或减少这个数目。 某些实现允许多个子进程或线程阻塞在同一个accept调用中，另外的实现却要求对accept调用需要某种类型的锁加以保（文件锁或者线程互斥锁等）。 让所有子进程或线程自行调用accept通常比让父进程或主线程独自调用accept并把描述符传递个子进程或线程来的简单和快速。 由于潜在select冲突的原因，让所有子进程或线程阻塞在同一个accept调用中比让他们阻塞在同一个select调用中更可取。 使用线程通常远快于使用进程，不过选择每个客户一个子进程还是每个客户一个线程取决于操作系统提供什么支持(某些系统不提供线程支持)，还可能取决于为服务每个客户需要激活其他什么程序。举例来说，如果accept客户连接的服务器调用fork和exec（譬如说inetd超级守护进程），那么fork一个单线程的进程可能快于fork一个多线程的进程，另外还有资源等方面的综合考虑。]]></content>
+      <categories>
+        <category>UNIX</category>
+        <category>网络编程</category>
+      </categories>
+      <tags>
+        <tag>TCP</tag>
+        <tag>客户-服务器</tag>
+      </tags>
+  </entry>
+</search>
