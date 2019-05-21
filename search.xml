@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[详解select查询语句]]></title>
+    <url>%2Fposts%2F968f054e.html</url>
+    <content type="text"><![CDATA[详解select查询语句 where,group by,having,order by,limit按顺序出现：1-5 1、where的常用运算表达式：比较运算符：&lt;,&lt;=,=,in(在某集合内),!=或&lt;&gt;,&gt;,&gt;=,between(在某范围内)逻辑运算符：非：NOT或 |，或：OR或||，与：AND或&amp;&amp; 模糊查询：like-&gt;像%-&gt;通配任意字符‘_’-&gt;通配单个字符 2、group by:把行按字段分组eps：group by col1,col2,…colN 运用场合：常见于统计场合，如按栏目计算帖子数，统计每个人的平均成绩等max,min,sum,avg,count例： select max(shop_price) from goods; select cat_id,max(shop_price) from goods group by cat_id; 可以给列或计算结果取别名，用as select cat_id,sum(shop_price*goods_number) as hk from goods group by cat_id; 3、havingwhere作用于表中的列，having作用于查询结果中的列，其他用法一样所以，两者同时使用时：where在前，having在后查询market_price-shop price大于200的结果 select goods_id,goods_name,market_price-shop price as sheng from where market_price-shop_price&gt;200; select goods_id,goods_name,market_price-shop price as sheng from having sheng&gt;200; 综合一下： select name,sum(score&lt;60) as gk,avg(score) as pj from stu group by name having gk &gt;=2 4、order by 排序功能按一个或多个字段对结果进行排序 select goods_id,goods_name,shop_price from goods where cat_id=3 order by shop_price; 默认升序排列，或用asc声明，若为降序，用desc声明，则 order by shop_price desc； select goods_id,goods_name,shop_price from goods where cat_id&lt;&gt;3 order by cat_id,shop_price desc; 先按cat_id升序排列，再按shop_price降序排列：可按多字段排序 5、limit在语句最后，起到限制条目的作用 Limit[offset]N；offset：偏移量（可选项），N：取出条目 select goods_id, goods_name, shop_price from goods where cat_id&lt;&gt;3 order by cat_id,shop_price desc limit 3,3; 从第三行取，取3行 综合查询，例：取出每个栏目下的最贵的商品 select * from (select goods_id, cat_id, goods_name, shop_price from goods oder by cat_id asc,shop_price desc) as tmp group by cat_id;]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2Fposts%2F4a17b156.html</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
